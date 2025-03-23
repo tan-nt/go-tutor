@@ -7,6 +7,7 @@
     COPY package*.json ./
     COPY tsconfig.json ./
     COPY next.config.mjs ./
+    COPY .env ./
     
     RUN npm install --frozen-lockfile
     
@@ -38,6 +39,7 @@
     COPY --from=build /app/public ./public
     COPY --from=build /app/package.json ./package.json
     COPY --from=build /app/next.config.mjs ./next.config.mjs
+    COPY --from=build /app/.env ./.env
     
     # Next.js needs this
     EXPOSE 3000
