@@ -1,5 +1,5 @@
 {
-  "name": "duolingo-clone",
+  "name": "gotutor-clone",
   "version": "1.0.1",
   "private": true,
   "scripts": {
@@ -24,14 +24,14 @@
     "nextjs",
     "vercel",
     "react",
-    "duolingo-clone",
+    "gotutor-clone",
     "learn-language",
     "shadcn",
     "shadcn-ui",
     "radix-ui",
     "cn",
     "clsx",
-    "lingo",
+    "gotutor",
     "postgresql",
     "sonner",
     "drizzle",
@@ -57,11 +57,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanidhyy/duolingo-clone.git"
+    "url": "https://github.com/sanidhyy/gotutor-clone.git"
   },
-  "homepage": "https://github.com/sanidhyy/duolingo-clone#readme",
+  "homepage": "https://github.com/sanidhyy/gotutor-clone#readme",
   "bugs": {
-    "url": "https://github.com/sanidhyy/duolingo-clone/issues",
+    "url": "https://github.com/sanidhyy/gotutor-clone/issues",
     "email": "sanidhya.verma12345@gmail.com"
   },
   "funding": [

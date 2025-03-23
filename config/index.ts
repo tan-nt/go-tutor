@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
-  title: "Lingo",
+  title: "GoTutor",
   description:
     "Interactive platform for language learning with lessons, quizzes, and progress tracking.",
   keywords: [
@@ -9,14 +9,14 @@ export const siteConfig: Metadata = {
     "nextjs",
     "vercel",
     "react",
-    "duolingo-clone",
+    "gotutor-clone",
     "learn-language",
     "shadcn",
     "shadcn-ui",
     "radix-ui",
     "cn",
     "clsx",
-    "lingo",
+    "gotutor",
     "postgresql",
     "sonner",
     "drizzle",
@@ -40,12 +40,12 @@ export const siteConfig: Metadata = {
     "css",
   ] as Array<string>,
   authors: {
-    name: "Sanidhya Kumar Verma",
-    url: "https://github.com/sanidhyy",
+    name: "Huynh Tan",
+    url: "https://github.com/tan-nt",
   },
 } as const;
 
 export const links = {
-  sourceCode: "https://github.com/sanidhyy/duolingo-clone",
-  email: "sanidhya.verma12345@gmail.com",
+  sourceCode: "https://github.com/tan-nt/intelligent-tutoring",
+  email: "dylan.murphy.nt@gmail.com",
 } as const;
