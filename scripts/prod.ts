@@ -3,9 +3,10 @@ import "dotenv/config";
 import { drizzle } from "drizzle-orm/node-postgres";
 
 import * as schema from "@/db/schema";
+import { getDatabaseUrl } from "../lib/get-database-url";
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: getDatabaseUrl(),
   ssl: { rejectUnauthorized: false }, // Needed for GCP public IP
 });
 
