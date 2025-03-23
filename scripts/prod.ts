@@ -7,7 +7,7 @@ import { getDatabaseUrl } from "../lib/get-database-url";
 
 const client = new Client({
   connectionString: getDatabaseUrl(),
-  ssl: { rejectUnauthorized: false }, // Needed for GCP public IP
+  ssl: false,
 });
 
 const db = drizzle(client, { schema });
