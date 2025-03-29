@@ -18,7 +18,7 @@
 
 <summary>
 
-# :notebook_with_decorative_cover: Table of Contents
+# Table of Contents
 
 </summary>
 
@@ -39,7 +39,13 @@
 
 </details>
 
-## :bangbang: Folder Structure
+# Tool:
+- nvm for npm management:
+    + https://dev.to/ajeetraina/how-to-install-and-configure-nvm-on-mac-os-5fgi
+    +  # This loads nvm
+      + nano ~/.zshrc
+      + export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  ## Folder Structure
 
 Here is the folder structure of this app.
 
