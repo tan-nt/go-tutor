@@ -13,7 +13,7 @@ import {
 import { MAX_HEARTS } from "@/constants";
 
 export const courses = pgTable("courses", {
-  id: serial("id").primaryKey(),
+  id: varchar("id", { length: 100 }).primaryKey(),
   title: text("title").notNull(),
   imageSrc: text("image_src").notNull(),
   category: varchar("category", { length: 100 }),
@@ -35,12 +35,10 @@ export const units = pgTable("units", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(), // Unit 1
   description: text("description").notNull(), // Learn the basics of spanish
-  courseId: integer("course_id")
-    .references(() => courses.id, {
-      onDelete: "cascade",
-    })
-    .notNull(),
-  order: integer("order").notNull(),
+  courseId: varchar("course_id", { length: 100 })
+  .references(() => courses.id, { onDelete: "cascade" })
+  .notNull(),
+  priority: integer("priority").notNull(),
 });
 
 export const unitsRelations = relations(units, ({ many, one }) => ({
@@ -141,7 +139,7 @@ export const userProgress = pgTable("user_progress", {
   userId: text("user_id").primaryKey(),
   userName: text("user_name").notNull().default("User"),
   userImageSrc: text("user_image_src").notNull().default("/mascot.svg"),
-  activeCourseId: integer("active_course_id").references(() => courses.id, {
+  activeCourseId: varchar("active_course_id", { length: 100 }).references(() => courses.id, {
     onDelete: "cascade",
   }),
   hearts: integer("hearts").notNull().default(MAX_HEARTS),
