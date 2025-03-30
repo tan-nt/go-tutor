@@ -24,7 +24,7 @@ import { ResultCard } from "./result-card";
 type QuizProps = {
   initialPercentage: number;
   initialHearts: number;
-  initialLessonId: number;
+  initialLessonId: string;
   initialLessonChallenges: (typeof challenges.$inferSelect & {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
@@ -90,12 +90,22 @@ export const Quiz = ({
 
   const onSelect = (id: number) => {
     if (status !== "none") return;
-
     setSelectedOption(id);
   };
 
   const onContinue = () => {
-    if (!selectedOption) return;
+    if (!selectedOption) {
+      if (challenge.type === "CONTENT_READING") {
+        setStatus("correct");
+        setPercentage((prev) => prev + 100 / challenges.length);
+         if (initialPercentage === 100) {
+          setHearts((prev) => Math.min(prev + 1, MAX_HEARTS));
+        }
+        setSelectedOption(1);
+        return;
+      }
+      return;
+    }
 
     if (status === "wrong") {
       setStatus("none");
@@ -203,10 +213,14 @@ export const Quiz = ({
     );
   }
 
-  const title =
-    challenge.type === "ASSIST"
-      ? "Select the correct meaning"
-      : challenge.question;
+  let title = "Select the correct meaning"
+  if (challenge.type === "ASSIST") {
+    title = "Select the correct meaning"
+  } else if (challenge.type === "SELECT") {
+    title = challenge.question
+  } else if (challenge.type === "CONTENT_READING") {
+    title = "Read all the content"
+  }
 
   return (
     <>
@@ -221,30 +235,43 @@ export const Quiz = ({
       <div className="flex-1">
         <div className="flex h-full items-center justify-center">
           <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
-            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl">
+            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl mt-12">
               {title}
             </h1>
 
-            <div>
+            <div className="space-y-6">
+              {/* Assist Type */}
               {challenge.type === "ASSIST" && (
-                <QuestionBubble question={challenge.question} />
+                <div>
+                  <QuestionBubble question={challenge.question} />
+                </div>
               )}
 
-              <Challenge
-                options={options}
-                onSelect={onSelect}
-                status={status}
-                selectedOption={selectedOption}
-                disabled={pending}
-                type={challenge.type}
-              />
+              {/* Content Reading Type */}
+              {challenge.type === "CONTENT_READING" && (
+                <div className="bg-white p-6 rounded-2xl shadow-md border prose max-w-none">
+                  <div dangerouslySetInnerHTML={{ __html: challenge.content ?? "" }} />
+                </div>
+              )}
+
+              {/* Challenge Interaction */}
+              <div>
+                <Challenge
+                  options={options}
+                  onSelect={onSelect}
+                  status={status}
+                  selectedOption={selectedOption}
+                  disabled={pending}
+                  type={challenge.type}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <Footer
-        disabled={pending || !selectedOption}
+        disabled={(pending || !selectedOption) && challenge.type !== "CONTENT_READING"}
         status={status}
         onCheck={onContinue}
       />

@@ -487,15 +487,84 @@ INSERT INTO public.lessons (id, title, unit_id, priority) VALUES('RUNNING_RACE_T
 
 -- DROP TABLE public.challenges;
 
+
 CREATE TABLE public.challenges (
 	id serial4 PRIMARY KEY,
 	lesson_id varchar(100) NOT NULL,
-	"type" public."type" NOT NULL,
+	"type" varchar(50) NOT NULL,
 	question text NOT NULL,
+	content text,
 	priority int4 NOT NULL,
 	created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, content, priority, created_at, updated_at)
+VALUES (
+  1,
+  'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1',
+  'KNOWLEDGE'::public."type",
+  'Read all the contents',
+  $$<h1>Lesson: Nouns</h1>
+<h2>Unit: Spanish Basic - Unit 1</h2>
+<h3>Lesson ID: SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1</h3>
+
+<hr />
+
+<h2>🧠 Objective</h2>
+<p>Learn the basics of Spanish nouns including gender, number, and common vocabulary.</p>
+
+<h2>📘 Introduction</h2>
+<p>In Spanish, nouns (<em>sustantivos</em>) represent people, places, things, or ideas. Every noun has a <strong>gender</strong> (masculine or feminine) and a <strong>number</strong> (singular or plural).</p>
+
+<h2>🧩 Gender of Nouns</h2>
+<ul>
+  <li><strong>Masculine nouns</strong> usually end in <strong>-o</strong>:
+    <ul>
+      <li><em>el libro</em> (the book)</li>
+      <li><em>el niño</em> (the boy)</li>
+    </ul>
+  </li>
+  <li><strong>Feminine nouns</strong> usually end in <strong>-a</strong>:
+    <ul>
+      <li><em>la mesa</em> (the table)</li>
+      <li><em>la niña</em> (the girl)</li>
+    </ul>
+  </li>
+</ul>
+<p>✅ Some exceptions exist, so it's important to memorize them.</p>
+
+<h2>🔢 Plural of Nouns</h2>
+<ul>
+  <li>If a noun ends in a vowel, add <strong>-s</strong>: <em>el libro</em> → <em>los libros</em></li>
+  <li>If a noun ends in a consonant, add <strong>-es</strong>: <em>la ciudad</em> → <em>las ciudades</em></li>
+</ul>
+
+<h2>🗣️ Practice Vocabulary</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Spanish</th>
+      <th>English</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>el perro</td><td>the dog</td><td>Masculine</td></tr>
+    <tr><td>la casa</td><td>the house</td><td>Feminine</td></tr>
+    <tr><td>el coche</td><td>the car</td><td>Masculine</td></tr>
+    <tr><td>la flor</td><td>the flower</td><td>Feminine</td></tr>
+  </tbody>
+</table>
+
+<hr />
+<p><em>Practice saying these nouns aloud, and try to form your own simple sentences!</em></p>$$,
+  0,
+  '2025-03-30 15:50:23.819',
+  '2025-03-30 15:50:23.819'
+);
+
 
 INSERT INTO public.challenges
 (id, lesson_id, "type", question, priority)
