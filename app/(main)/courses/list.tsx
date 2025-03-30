@@ -55,6 +55,7 @@ export const List = ({ courses, activeCourseId, isPopular, isRandom, showItemNum
           rating={course.rating ?? 0}
           userInLearningTotal={course.userInLearningTotal ?? 0}
           category={course.category ?? "Unknown"}
+          isPopular={isPopular ?? false}
         />
       ))}
     </div>

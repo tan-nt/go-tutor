@@ -1,4 +1,4 @@
-import { Check, Star } from "lucide-react";
+import { Check, Crown, GraduationCap, Star } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,7 @@ type CardProps = {
   userClickTotal?: number;
   userInLearningTotal?: number;
   category?: string;
+  isPopular?: boolean;
 };
 
 export const Card = ({
@@ -22,6 +23,7 @@ export const Card = ({
   onClick,
   disabled = false,
   isActive = false,
+  isPopular = false,
   rating = 0,
   userClickTotal = 0,
   userInLearningTotal = 0,
@@ -37,12 +39,23 @@ export const Card = ({
     >
       {/* Checkmark if active */}
       <div className="flex min-h-[24px] w-full items-center justify-end">
-        {isActive && (
-          <div className="flex items-center justify-center rounded-md bg-green-600 p-1.5">
-            <Check className="h-4 w-4 stroke-[4] text-white" />
+      {isActive && (
+        <div className="flex items-center justify-center rounded-md bg-blue-600 p-1.5 shadow-sm">
+          <GraduationCap className="h-4 w-4 stroke-[3] text-white" />
+        </div>
+      )}
+      </div>
+
+      {/* Popularmark if isPopular is true */}
+      <div className="flex min-h-[24px] w-full items-center justify-end">
+        {isPopular && (
+          <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 px-3 py-1 text-xs font-semibold text-white shadow-md">
+            <Crown className="h-4 w-4 stroke-[2.5] text-white" />
+            <span>Popular</span>
           </div>
         )}
       </div>
+
 
       {/* Image with consistent sizing */}
       <div className="flex items-center justify-center h-[150px] w-[100px]">

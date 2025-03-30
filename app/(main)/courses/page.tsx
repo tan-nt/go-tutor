@@ -15,7 +15,7 @@ const CoursesPage = async () => {
   return (
     <div className="mx-auto h-full max-w-[912px] px-3">
       <h1 className="text-2xl font-bold text-neutral-700">My Courses</h1>
-      <List courses={inProgressCourses} />
+      <List courses={inProgressCourses} activeCourseId={userProgress?.activeCourseId} />
 
       <h1 className="text-2xl font-bold text-neutral-700 mt-10">Popular Courses</h1>
       <List courses={courses} isPopular={true} showItemNumber={12} activeCourseId={userProgress?.activeCourseId} />
