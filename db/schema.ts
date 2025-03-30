@@ -7,6 +7,7 @@ import {
   serial,
   text,
   timestamp,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 import { MAX_HEARTS } from "@/constants";
@@ -15,6 +16,14 @@ export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   imageSrc: text("image_src").notNull(),
+  category: varchar("category", { length: 100 }),
+  status: varchar("status", { length: 20 }).notNull().default("IN-CONSTRUCTION"),
+  description: text("description"),
+  rating: integer("rating"),
+  userClickTotal: integer("user_click_total").default(0),
+  userInLearningTotal: integer("user_in_learning_total").default(0),
+  createdAt: timestamp("created_at", { withTimezone: false }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: false }).defaultNow(),
 });
 
 export const coursesRelations = relations(courses, ({ many }) => ({
