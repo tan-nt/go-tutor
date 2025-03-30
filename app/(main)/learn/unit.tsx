@@ -40,6 +40,7 @@ export const Unit = ({
             <div key={lesson.id} className="relative">
               <LessonButton
                 id={lesson.id}
+                title={lesson.title}
                 index={i}
                 totalCount={lessons.length - 1}
                 current={isCurrent}

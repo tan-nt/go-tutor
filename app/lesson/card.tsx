@@ -33,6 +33,7 @@ export const Card = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [audio, _, controls] = useAudio({ src: audioSrc || "" });
 
+
   const handleClick = useCallback(() => {
     if (disabled) return;
 
@@ -41,6 +42,7 @@ export const Card = ({
   }, [disabled, onClick, controls]);
 
   useKey(shortcut, handleClick, {}, [handleClick]);
+
 
   return (
     <div
