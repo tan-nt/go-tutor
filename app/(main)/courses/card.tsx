@@ -1,12 +1,13 @@
 import { Crown, GraduationCap, Star } from "lucide-react";
 import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 type CardProps = {
   title: string;
-  id: number;
+  id: string;
   imageSrc: string;
-  onClick: (id: number) => void;
+  onClick: (id: string) => void;
   disabled?: boolean;
   isActive?: boolean;
   rating?: number;

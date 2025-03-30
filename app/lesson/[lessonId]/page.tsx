@@ -6,7 +6,7 @@ import { Quiz } from "../quiz";
 
 type LessonIdPageProps = {
   params: {
-    lessonId: number;
+    lessonId: string;
   };
 };
 

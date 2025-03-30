@@ -160,7 +160,7 @@ export const getCourseProgress = cache(async () => {
   };
 });
 
-export const getLesson = cache(async (id?: number) => {
+export const getLesson = cache(async (id?: string) => {
   const { userId } = auth();
 
   if (!userId) return null;
