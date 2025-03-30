@@ -50,14 +50,14 @@ export const unitsRelations = relations(units, ({ many, one }) => ({
 }));
 
 export const lessons = pgTable("lessons", {
-  id: serial("id").primaryKey(),
+  id: varchar("id", { length: 100 }).primaryKey(),
   title: text("title").notNull(),
-  unitId: integer("unit_id")
+  unitId: varchar("unit_id", { length: 100 })
     .references(() => units.id, {
       onDelete: "cascade",
     })
     .notNull(),
-  order: integer("order").notNull(),
+  priority: integer("priority").notNull(),
 });
 
 export const lessonsRelations = relations(lessons, ({ one, many }) => ({
@@ -72,7 +72,7 @@ export const challengesEnum = pgEnum("type", ["SELECT", "ASSIST"]);
 
 export const challenges = pgTable("challenges", {
   id: serial("id").primaryKey(),
-  lessonId: integer("lesson_id")
+  lessonId: varchar("lesson_id", { length: 100 })
     .references(() => lessons.id, {
       onDelete: "cascade",
     })

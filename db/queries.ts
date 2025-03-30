@@ -47,7 +47,7 @@ export const getUnits = cache(async () => {
     orderBy: (units, { asc }) => [asc(units.priority)],
     with: {
       lessons: {
-        orderBy: (lessons, { asc }) => [asc(lessons.order)],
+        orderBy: (lessons, { asc }) => [asc(lessons.priority)],
         with: {
           challenges: {
             orderBy: (challenges, { asc }) => [asc(challenges.order)],
@@ -92,7 +92,7 @@ export const getCourseById = cache(async (courseId: number) => {
         orderBy: (units, { asc }) => [asc(units.priority)],
         with: {
           lessons: {
-            orderBy: (lessons, { asc }) => [asc(lessons.order)],
+            orderBy: (lessons, { asc }) => [asc(lessons.priority)],
           },
         },
       },
@@ -113,7 +113,7 @@ export const getCourseProgress = cache(async () => {
     where: eq(units.courseId, userProgress.activeCourseId),
     with: {
       lessons: {
-        orderBy: (lessons, { asc }) => [asc(lessons.order)],
+        orderBy: (lessons, { asc }) => [asc(lessons.priority)],
         with: {
           unit: true,
           challenges: {
