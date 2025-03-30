@@ -38,16 +38,12 @@ export const Card = ({
       )}
     >
       {/* Checkmark if active */}
-      <div className="flex min-h-[24px] w-full items-center justify-end">
-      {isActive && (
-        <div className="flex items-center justify-center rounded-md bg-blue-600 p-1.5 shadow-sm">
-          <GraduationCap className="h-4 w-4 stroke-[3] text-white" />
-        </div>
-      )}
-      </div>
-
-      {/* Popularmark if isPopular is true */}
-      <div className="flex min-h-[24px] w-full items-center justify-end">
+      <div className="flex min-h-[24px] w-full items-center justify-end gap-2">
+        {isActive && (
+          <div className="flex items-center justify-center rounded-md bg-blue-600 p-1.5 shadow-sm">
+            <GraduationCap className="h-4 w-4 stroke-[3] text-white" />
+          </div>
+        )}
         {isPopular && (
           <div className="flex items-center gap-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 px-3 py-1 text-xs font-semibold text-white shadow-md">
             <Crown className="h-4 w-4 stroke-[2.5] text-white" />
@@ -56,13 +52,12 @@ export const Card = ({
         )}
       </div>
 
-
       {/* Image with consistent sizing */}
-      <div className="flex items-center justify-center h-[150px] w-[100px]">
+      <div className="flex items-center justify-center h-[120px] w-[100px]">
         <Image
           src={imageSrc}
           alt={title}
-          height={150}
+          height={120}
           width={100}
           className="object-contain rounded-md border drop-shadow-sm"
         />
