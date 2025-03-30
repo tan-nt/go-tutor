@@ -14,7 +14,7 @@ import {
 } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 
-export const upsertUserProgress = async (courseId: number) => {
+export const upsertUserProgress = async (courseId: string) => {
   const { userId } = auth();
   const user = await currentUser();
 

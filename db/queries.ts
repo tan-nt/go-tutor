@@ -84,7 +84,7 @@ export const getUnits = cache(async () => {
   return normalizedData;
 });
 
-export const getCourseById = cache(async (courseId: number) => {
+export const getCourseById = cache(async (courseId: string) => {
   const data = await db.query.courses.findFirst({
     where: eq(courses.id, courseId),
     with: {
