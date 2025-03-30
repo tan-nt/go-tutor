@@ -1,5 +1,6 @@
 import { lessons, units } from "@/db/schema";
 
+import { FeedbackPopover } from "./feedback";
 import { LessonButton } from "./lesson-button";
 import { UnitBanner } from "./unit-banner";
 
@@ -36,15 +37,20 @@ export const Unit = ({
           const isLocked = !lesson.completed && !isCurrent;
 
           return (
-            <LessonButton
-              key={lesson.id}
-              id={lesson.id}
-              index={i}
-              totalCount={lessons.length - 1}
-              current={isCurrent}
-              locked={isLocked}
-              percentage={activeLessonPercentage}
-            />
+            <div key={lesson.id} className="relative">
+              <LessonButton
+                id={lesson.id}
+                index={i}
+                totalCount={lessons.length - 1}
+                current={isCurrent}
+                locked={isLocked}
+                percentage={activeLessonPercentage}
+              />
+
+              {lesson.completed && (
+                <FeedbackPopover title={lesson.title} />
+              )}
+            </div>
           );
         })}
       </div>

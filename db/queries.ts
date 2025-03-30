@@ -128,6 +128,7 @@ export const getCourseProgress = cache(async () => {
     },
   });
 
+
   const firstUncompletedLesson = unitsInActiveCourse
     .flatMap((unit) => unit.lessons)
     .find((lesson) => {
@@ -139,6 +140,19 @@ export const getCourseProgress = cache(async () => {
         );
       });
     });
+
+  //   const uncompletedChallenges =
+  //   firstUncompletedLesson?.challenges.filter((challenge) => {
+  //     const progress = challenge.challengeProgress;
+
+  //     // If there's no progress at all
+  //     if (!progress || progress.length === 0) return true;
+
+  //     // If any progress entry is not completed
+  //     return progress.some((p) => !p.completed);
+  //   }) ?? [];
+
+  // console.log('uncompletedChallenges=', uncompletedChalleges);
 
   return {
     activeLesson: firstUncompletedLesson,
@@ -153,6 +167,7 @@ export const getLesson = cache(async (id?: number) => {
 
   const courseProgress = await getCourseProgress();
   const lessonId = id || courseProgress?.activeLessonId;
+  console.log('lessonId=', lessonId)
 
   if (!lessonId) return null;
 

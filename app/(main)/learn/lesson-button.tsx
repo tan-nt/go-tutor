@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import "react-circular-progressbar/dist/styles.css";
 
 type LessonButtonProps = {
-  id: number;
+  id: string;
   index: number;
   totalCount: number;
   locked?: boolean;
@@ -42,16 +42,18 @@ export const LessonButton = ({
   const isLast = index === totalCount;
   const isCompleted = !current && !locked;
 
+  // console.log("isCompleted", isCompleted);
+
   const Icon = isCompleted ? Check : isLast ? Crown : Star;
 
   const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
   return (
     <Link
-      href={href}
-      aria-disabled={locked}
-      style={{ pointerEvents: locked ? "none" : "auto" }}
-    >
+        href={href}
+        aria-disabled={locked}
+        style={{ pointerEvents: locked ? "none" : "auto" }}
+      >
       <div
         className="relative"
         style={{
@@ -59,44 +61,47 @@ export const LessonButton = ({
           marginTop: isFirst && !isCompleted ? 60 : 24,
         }}
       >
-        {current ? (
-          <div className="relative h-[102px] w-[102px]">
-            <div className="absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-green-500">
-              Start
-              <div
-                className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
-                aria-hidden
-              />
-            </div>
-            <CircularProgressbarWithChildren
-              value={Number.isNaN(percentage) ? 0 : percentage}
-              styles={{
-                path: {
-                  stroke: "#4ade80",
-                },
-                trail: {
-                  stroke: "#e5e7eb",
-                },
-              }}
-            >
-              <Button
-                size="rounded"
-                variant={locked ? "locked" : "secondary"}
-                className="h-[70px] w-[70px] border-b-8"
-              >
-                <Icon
-                  className={cn(
-                    "h-10 w-10",
-                    locked
-                      ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
-                      : "fill-primary-foreground text-primary-foreground",
-                    isCompleted && "fill-none stroke-[4]"
-                  )}
-                />
-              </Button>
-            </CircularProgressbarWithChildren>
+      {current ? (
+        <div className="relative h-[102px] w-[102px]">
+          <div className="absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-green-500">
+            Start
+            <div
+              className="absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent"
+              aria-hidden
+            />
           </div>
-        ) : (
+
+          {/* Progress circle */}
+          <CircularProgressbarWithChildren
+            value={Number.isNaN(percentage) ? 0 : percentage}
+            styles={{
+              path: {
+                stroke: "#4ade80",
+              },
+              trail: {
+                stroke: "#e5e7eb",
+              },
+            }}
+          >
+            <Button
+              size="rounded"
+              variant={locked ? "locked" : "secondary"}
+              className="h-[70px] w-[70px] border-b-8"
+            >
+              <Icon
+                className={cn(
+                  "h-10 w-10",
+                  locked
+                    ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
+                    : "fill-primary-foreground text-primary-foreground",
+                  isCompleted && "fill-none stroke-[4]"
+                )}
+              />
+            </Button>
+          </CircularProgressbarWithChildren>
+        </div>
+      ) : (
+        <div className="relative">
           <Button
             size="rounded"
             variant={locked ? "locked" : "secondary"}
@@ -112,8 +117,9 @@ export const LessonButton = ({
               )}
             />
           </Button>
-        )}
-      </div>
-    </Link>
+        </div>
+      )}
+    </div>
+  </Link>
   );
 };
