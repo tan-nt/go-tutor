@@ -479,3 +479,261 @@ INSERT INTO public.lessons (id, title, unit_id, priority) VALUES('RUNNING_STAMIN
 INSERT INTO public.lessons (id, title, unit_id, priority) VALUES('RUNNING_RACE_TECHNIQUES_UNIT_3_LESSON_1', 'Start strategy', 'RUNNING_RACE_TECHNIQUES_UNIT_3', 1);
 INSERT INTO public.lessons (id, title, unit_id, priority) VALUES('RUNNING_RACE_TECHNIQUES_UNIT_3_LESSON_2', 'Pacing', 'RUNNING_RACE_TECHNIQUES_UNIT_3', 2);
 INSERT INTO public.lessons (id, title, unit_id, priority) VALUES('RUNNING_RACE_TECHNIQUES_UNIT_3_LESSON_3', 'Finish strong', 'RUNNING_RACE_TECHNIQUES_UNIT_3', 3);
+
+
+-- public.challenges definition
+
+-- Drop table
+
+-- DROP TABLE public.challenges;
+
+CREATE TABLE public.challenges (
+	id serial4 PRIMARY KEY,
+	lesson_id varchar(100) NOT NULL,
+	"type" public."type" NOT NULL,
+	question text NOT NULL,
+	priority int4 NOT NULL,
+	created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(1, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(2, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(3, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(4, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(5, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(6, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(7, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(8, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_1', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(9, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(10, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(11, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(12, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(13, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(14, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(15, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(16, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_2', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(17, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(18, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(19, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(20, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(21, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(22, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(23, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(24, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_3', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(25, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(26, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(27, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(28, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(29, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(30, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(31, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(32, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_4', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(33, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(34, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(35, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(36, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(37, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(38, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(39, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(40, 'SPANISH_BASIC_SPANISH_UNIT_1_LESSON_5', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(41, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(42, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(43, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(44, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(45, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(46, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(47, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(48, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_1', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(49, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(50, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(51, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(52, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(53, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(54, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(55, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(56, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_2', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(57, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(58, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(59, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(60, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(61, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(62, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(63, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(64, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_3', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(65, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(66, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(67, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(68, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(69, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(70, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(71, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(72, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_4', 'ASSIST'::public."type", '"the zombie"', 8);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(73, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the man"?', 1);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(74, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the woman"?', 2);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(75, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the boy"?', 3);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(76, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'ASSIST'::public."type", '"the man"', 4);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(77, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the zombie"?', 5);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(78, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the robot"?', 6);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(79, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'SELECT'::public."type", 'Which one of these is "the girl"?', 7);
+INSERT INTO public.challenges
+(id, lesson_id, "type", question, priority)
+VALUES(80, 'SPANISH_INTERMEDIATE_SPANISH_UNIT_2_LESSON_5', 'ASSIST'::public."type", '"the zombie"', 8);

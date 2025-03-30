@@ -50,7 +50,7 @@ export const getUnits = cache(async () => {
         orderBy: (lessons, { asc }) => [asc(lessons.priority)],
         with: {
           challenges: {
-            orderBy: (challenges, { asc }) => [asc(challenges.order)],
+            orderBy: (challenges, { asc }) => [asc(challenges.priority)],
             with: {
               challengeProgress: {
                 where: eq(challengeProgress.userId, userId),
@@ -160,7 +160,7 @@ export const getLesson = cache(async (id?: number) => {
     where: eq(lessons.id, lessonId),
     with: {
       challenges: {
-        orderBy: (challenges, { asc }) => [asc(challenges.order)],
+        orderBy: (challenges, { asc }) => [asc(challenges.priority)],
         with: {
           challengeOptions: true,
           challengeProgress: {
