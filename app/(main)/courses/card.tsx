@@ -1,4 +1,4 @@
-import { Check, Crown, GraduationCap, Star } from "lucide-react";
+import { Crown, GraduationCap, Star } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
