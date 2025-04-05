@@ -1,0 +1,150 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "GoTutor" {
+
+  class User {
+    +id: string
+    +name: string
+    +email: string
+    +image_src: string
+  }
+
+  class UserProgress {
+    +user_id: string
+    +user_name: string
+    +user_image_src: string
+    +active_course_id: string
+    +hearts: int
+    +points: int
+  }
+
+  class UserSubscription {
+    +id: string
+    +user_id: string
+    +stripe_customer_id: string
+    +stripe_subscription_id: string
+    +stripe_price_id: string
+    +stripe_current_period_end: date
+  }
+
+  class Courses {
+    +id: string
+    +title: string
+    +image_src: string
+    +category: string
+    +status: string
+    +description: string
+    +rating: int
+    +user_click_total: int
+    +user_in_learning_total: int
+    +created_at: datetime
+    +updated_at: datetime
+  }
+
+  class Lessons {
+    +id: string
+    +title: string
+    +unit_id: string
+    +priority: int
+    +created_at: datetime
+    +updated_at: datetime
+  }
+
+  class Challenges {
+    +id: string
+    +lesson_id: string
+    +type: string
+    +question: string
+    +content: string
+    +priority: int
+    +created_at: datetime
+    +updated_at: datetime
+  }
+
+  class ChallengeOptions {
+    +id: string
+    +challenge_id: string
+    +text: string
+    +correct: bool
+    +image_src: string
+    +audio_src: string
+  }
+
+  class ChallengeProgress {
+    +id: string
+    +user_id: string
+    +challenge_id: string
+    +completed: bool
+  }
+
+  class Comments {
+    +id: string
+    +user_id: string
+    +lesson_id: string
+    +content: text
+    +created_at: datetime
+  }
+
+  class Notifications {
+    +id: string
+    +user_id: string
+    +type: string
+    +message: string
+    +read: bool
+    +created_at: datetime
+  }
+
+  class LiveChat {
+    +id: string
+    +user_id: string
+    +message: text
+    +created_at: datetime
+  }
+
+  class Feedback {
+    +id: string
+    +user_id: string
+    +lesson_id: string
+    +rating: int
+    +comment: text
+    +created_at: datetime
+  }
+
+  class Admin {
+    +id: string
+    +name: string
+    +email: string
+    +role: string
+  }
+
+  class CourseAnalytics {
+    +id: string
+    +course_id: string
+    +views: int
+    +completions: int
+    +average_rating: float
+  }
+
+  ' Relationships
+  User --> UserProgress
+  User --> UserSubscription
+  User --> ChallengeProgress
+  User --> Comments
+  User --> Notifications
+  User --> Feedback
+  User --> LiveChat
+
+  Courses --> Lessons
+  Lessons --> Challenges
+  Challenges --> ChallengeOptions
+
+  Lessons --> Comments
+  Lessons --> Feedback
+  Lessons --> LiveChat
+
+  Courses --> CourseAnalytics
+  Admin --> Courses
+}
+
+@enduml

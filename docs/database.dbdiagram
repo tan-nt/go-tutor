@@ -1,0 +1,140 @@
+Table users {
+  id uuid [pk]
+  name varchar
+  email varchar [unique]
+  image_src text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table user_progress {
+  user_id uuid [pk]
+  user_name varchar
+  user_image_src text
+  active_course_id uuid
+  hearts int
+  points int
+}
+
+Table user_subscription {
+  id uuid [pk]
+  user_id uuid
+  stripe_customer_id text
+  stripe_subscription_id text
+  stripe_price_id text
+  stripe_current_period_end timestamp
+}
+
+Table courses {
+  id uuid [pk]
+  title varchar
+  image_src text
+  category varchar
+  status varchar
+  description text
+  rating float
+  user_click_total int
+  user_in_learning_total int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table lessons {
+  id uuid [pk]
+  title varchar
+  unit_id uuid
+  priority int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table challenges {
+  id uuid [pk]
+  lesson_id uuid
+  type varchar
+  question text
+  content json
+  priority int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table challenge_options {
+  id uuid [pk]
+  challenge_id uuid
+  text text
+  correct boolean
+  image_src text
+  audio_src text
+}
+
+Table challenge_progress {
+  id uuid [pk]
+  user_id uuid
+  challenge_id uuid
+  completed boolean
+}
+
+Table comments {
+  id uuid [pk]
+  user_id uuid
+  lesson_id uuid
+  content text
+  created_at timestamp
+}
+
+Table feedback {
+  id uuid [pk]
+  user_id uuid
+  lesson_id uuid
+  rating float
+  comment text
+  created_at timestamp
+}
+
+Table notifications {
+  id uuid [pk]
+  user_id uuid
+  type varchar
+  message text
+  read boolean
+  created_at timestamp
+}
+
+Table live_chat {
+  id uuid [pk]
+  user_id uuid
+  message text
+  created_at timestamp
+}
+
+Table admins {
+  id uuid [pk]
+  name varchar
+  email varchar
+  role varchar
+}
+
+Table course_analytics {
+  id uuid [pk]
+  course_id uuid
+  views int
+  completions int
+  average_rating float
+}
+
+Ref: challenge_progress.challenge_id > challenges.id
+Ref: challenge_progress.user_id > users.id
+Ref: challenge_options.challenge_id > challenges.id
+Ref: challenges.lesson_id > lessons.id
+Ref: lessons.unit_id > courses.id
+Ref: user_progress.user_id > users.id
+Ref: user_progress.active_course_id > courses.id
+Ref: user_subscription.user_id > users.id
+Ref: feedback.lesson_id > lessons.id
+Ref: feedback.user_id > users.id
+Ref: comments.user_id > users.id
+Ref: comments.lesson_id > lessons.id
+Ref: notifications.user_id > users.id
+Ref: live_chat.user_id > users.id
+Ref: course_analytics.course_id > courses.id

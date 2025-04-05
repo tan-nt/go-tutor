@@ -15,6 +15,7 @@ import {
 
 import { Header } from "./header";
 import { Unit } from "./unit";
+import DiscussionThread from "./discussion_thread";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -70,6 +71,7 @@ const LearnPage = async () => {
             />
           </div>
         ))}
+        <DiscussionThread lessonId={courseProgress.activeLesson} />
       </FeedWrapper>
     </div>
   );
