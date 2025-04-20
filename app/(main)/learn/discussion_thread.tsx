@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  serverTimestamp,
+  query,
+  orderBy,
+} from "firebase/firestore";
 
 import { Button } from "@/components/ui/button";
-
-import { db } from "@/lib/firebase";
+import { getDb } from "@/lib/firebase";
 
 interface Comment {
   id: string;
@@ -18,11 +23,18 @@ interface Comment {
 export default function DiscussionThread({ lessonId }: { lessonId: string }) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
+
   useEffect(() => {
-    const q = query(
-      collection(db, "lessons", lessonId, "comments"),
-      orderBy("createdAt", "asc")
-    );
+    const db = getDb();
+    console.log("🔥 lessonId:", lessonId); // Add this
+
+    if (!lessonId || typeof lessonId !== "string") {
+      console.error("❌ Invalid lessonId passed to DiscussionThread:", lessonId);
+      return;
+    }
+
+    const commentsRef = collection(db, "lessons", lessonId, "comments");
+    const q = query(commentsRef, orderBy("createdAt", "asc"));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const loadedComments = snapshot.docs.map((doc) => ({
@@ -35,14 +47,22 @@ export default function DiscussionThread({ lessonId }: { lessonId: string }) {
     return () => unsubscribe();
   }, [lessonId]);
 
+
   const handleSend = async () => {
+    console.log("🔥 newComment:", newComment);
     if (!newComment.trim()) return;
-    await addDoc(collection(db, "lessons", lessonId, "comments"), {
-      text: newComment,
-      user: "Anonymous", // Replace with actual user data
-      createdAt: serverTimestamp(),
-    });
-    setNewComment("");
+
+    try {
+      const db = getDb();
+      await addDoc(collection(db, "lessons", lessonId, "comments"), {
+        text: newComment,
+        user: "Anonymous",
+        createdAt: serverTimestamp(),
+      });
+      setNewComment("");
+    } catch (err) {
+      console.error("❌ Failed to send comment:", err);
+    }
   };
 
   return (
@@ -62,7 +82,7 @@ export default function DiscussionThread({ lessonId }: { lessonId: string }) {
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-gray-800">{comment.user}</span>
-              <span className="text-xs text-gray-400">just now</span> {/* Replace with formatted time */}
+              <span className="text-xs text-gray-400">just now</span>
             </div>
             <p className="mt-1 text-sm text-gray-700">{comment.text}</p>
           </div>
@@ -78,7 +98,7 @@ export default function DiscussionThread({ lessonId }: { lessonId: string }) {
           className="flex-1 rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm focus:border-green-500 focus:outline-none"
         />
         <Button
-          onClick={handleSend}
+          onClick={() => handleSend() }
           className="rounded-full bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600 transition"
         >
           Send
